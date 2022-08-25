@@ -16,6 +16,7 @@ import MyItems from "./Pages/MyItem/MyItems";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Authentication/Log/Login";
+import SignUp from "./Authentication/Signup/Signup";
 
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -48,6 +49,7 @@ function App() {
 
             {/* Login & Logout */}
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </div>
         <Footer />

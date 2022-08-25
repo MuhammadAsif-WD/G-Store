@@ -1,64 +1,93 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  useSignInWithEmailAndPassword,
+  useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { Icon } from "@iconify/react";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../Shared/Loading";
+import { Icon } from "@iconify/react";
 // import useToken from "../../Hooks/useToken";
 
-const SignIn = () => {
+const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   // const [token] = useToken(user || gUser);
 
-  let signInError;
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
 
-  // useEffect(() => {
-  // //   if (token) {
-  // //     navigate(from, { replace: true });
-  // //   }
-  // // }, [token, from, navigate]);
+  let signUpError;
 
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return <Loading></Loading>;
   }
 
-  if (error || gError) {
-    signInError = (
+  if (error || gError || updateError) {
+    signUpError = (
       <p className="text-primary">
-        <small>{error?.message || gError?.message}</small>
+        <small>
+          {error?.message || gError?.message || updateError?.message}
+        </small>
       </p>
     );
   }
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
-  };
+  if (user || gUser) {
+    console.log(user || gUser);
+  }
 
+  // if (token) {
+  //   navigate("/");
+  // }
+
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    console.log("update done");
+  };
   return (
     <div className="flex justify-center items-center text-secondary">
       <div className="shadow-md p-16 justify-center">
         <div>
-          <h2 className="text-center text-2xl uppercase font-serif font-thin mb-10 animate__animated animate__heartBeat">
-            Sign <span className="text-primary">In</span>
+          <h2 className="text-center uppercase text-2xl font-thin font-serif animate__animated animate__heartBeat">
+            Sign <span className="text-primary">Up</span>
             <span className="divider bg-primary h-[3px] w-1/4 mx-auto mt-1"></span>
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-xs animate__animated animate__fadeIn">
+            <div className="form-control w-full max-w-xs animate__animated animate__fadeIn animate__delay-1s mt-5">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="input outline-none border border-primary rounded px-2 py-2 w-full max-w-xs"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is Required",
+                  },
+                })}
+              />
+              <label>
+                {errors.name?.type === "required" && (
+                  <span className="text-primary">{errors.name.message}</span>
+                )}
+              </label>
+            </div>
+
+            <div className="form-control w-full max-w-xs animate__animated animate__fadeIn animate__delay-2s  mt-5">
               <label>
                 <span>Email</span>
               </label>
@@ -86,14 +115,14 @@ const SignIn = () => {
                 )}
               </label>
             </div>
-            <div className="form-control w-full max-w-xs mt-5 animate__animated animate__fadeIn animate__delay-1s">
+            <div className="animate__animated animate__fadeIn animate__delay-3s mt-5">
               <label>
                 <span>Password</span>
               </label>
               <input
                 type="password"
                 placeholder="Password"
-                className="input outline-none border border-primary rounded px-2 py-2 w-full max-w-xs animate__animated animate__fadeIn animate__delay-1s"
+                className="input outline-none border border-primary rounded px-2 py-2 w-full max-w-xs"
                 {...register("password", {
                   required: {
                     value: true,
@@ -107,7 +136,7 @@ const SignIn = () => {
               />
               <label className="animate__animated animate__fadeIn animate__delay-1s">
                 {errors.password?.type === "required" && (
-                  <span className="text-red-500">
+                  <span className="text-primary">
                     {errors.password.message}
                   </span>
                 )}
@@ -119,19 +148,22 @@ const SignIn = () => {
               </label>
             </div>
 
-            {signInError}
+            {signUpError}
             <input
-              className="w-full max-w-xs hover:bg-primary ease-in duration-300 hover:text-white py-2 rounded cursor-pointer border border-primary mt-8 animate__animated animate__fadeIn animate__delay-2s"
+              className="w-full max-w-xs hover:bg-primary ease-in duration-300 hover:text-white py-2 rounded cursor-pointer border border-primary mt-8 animate__animated animate__fadeIn animate__delay-4s"
               type="submit"
               value="Login"
             />
           </form>
-          <div className="animate__animated animate__fadeIn animate__delay-3s">
-            <p>
+          <div
+            className="animate__animated animate__fadeIn animate__delay-5s
+animate__animated animate__fadeIn animate__delay-5s"
+          >
+            <p className="mt-2">
               <small>
-                Are you new to our website?{" "}
-                <Link className="text-primary" to="/signup">
-                  Create New Account
+                Already have an account?{" "}
+                <Link className="text-primary" to="/login">
+                  Please login
                 </Link>
               </small>
             </p>
@@ -155,4 +187,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
