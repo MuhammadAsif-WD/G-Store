@@ -1,7 +1,14 @@
-import React from "react";
+import { signOut } from "firebase/auth";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const NavbarMobile = () => {
+  const signOutHandler = () => {
+    signOut(auth);
+  };
+
+  const [user] = useState(auth);
   return (
     <div>
       <ul className="text-sm 2xl:hidden xl:hidden lg:hidden block animate__animated animate__fadeInTopRight mb-16 mt-16">
@@ -104,11 +111,22 @@ const NavbarMobile = () => {
           </NavLink>
         </li>
         <li className="mt-10">
-          <Link to="login">
-            <button className="w-full text-sm hover:bg-primary border border-primary hover:text-[#fff] ease-in duration-300 px-8 py-2 mt-[-10px] rounded overflow-hidden">
-              Login
-            </button>
-          </Link>
+          {user ? (
+            <Link to="/">
+              <button
+                onClick={signOutHandler}
+                className="w-full text-sm hover:bg-primary border border-primary hover:text-[#fff] ease-in duration-300 px-8 py-2 mt-[-10px] rounded overflow-hidden"
+              >
+                Logout
+              </button>
+            </Link>
+          ) : (
+            <Link to="login">
+              <button className="w-full text-sm hover:bg-primary border border-primary hover:text-[#fff] ease-in duration-300 px-8 py-2 mt-[-10px] rounded overflow-hidden">
+                Login
+              </button>
+            </Link>
+          )}
         </li>
       </ul>
     </div>

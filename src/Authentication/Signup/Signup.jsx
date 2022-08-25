@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../Shared/Loading";
 import { Icon } from "@iconify/react";
-// import useToken from "../../Hooks/useToken";
+import useToken from "../Log/useToken";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -23,9 +23,9 @@ const SignUp = () => {
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-  // const [token] = useToken(user || gUser);
+  const [token] = useToken(user || gUser);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   let signUpError;
 
@@ -47,9 +47,9 @@ const SignUp = () => {
     console.log(user || gUser);
   }
 
-  // if (token) {
-  //   navigate("/");
-  // }
+  if (token) {
+    // navigate("/");
+  }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
@@ -115,7 +115,7 @@ const SignUp = () => {
                 )}
               </label>
             </div>
-            <div className="animate__animated animate__fadeIn animate__delay-3s mt-5">
+            <div className="form-control w-full max-w-xs animate__animated animate__fadeIn animate__delay-3s mt-5">
               <label>
                 <span>Password</span>
               </label>
@@ -152,7 +152,7 @@ const SignUp = () => {
             <input
               className="w-full max-w-xs hover:bg-primary ease-in duration-300 hover:text-white py-2 rounded cursor-pointer border border-primary mt-8 animate__animated animate__fadeIn animate__delay-4s"
               type="submit"
-              value="Login"
+              value="Sign up"
             />
           </form>
           <div

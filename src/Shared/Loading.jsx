@@ -4,9 +4,9 @@ import style from "./Loading.module.css";
 const Loading = () => {
   return (
     <div>
-      <div class={style.center}>
-        <div class={style.ring}></div>
-        <span class={style.loading}>loading...</span>
+      <div className={style.center}>
+        <div className={style.ring}></div>
+        <span className={style.loading}>loading...</span>
       </div>
     </div>
   );
