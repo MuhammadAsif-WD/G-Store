@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="361.496" height="361.5" viewBox="0 0 361.496 361.5">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_3" data-name="Path 3" d="M6.594,6.59h361.5v361.5H6.594Zm0,0" />
+    </clipPath>
+  </defs>
+  <g id="Gadget_house" data-name="Gadget house" transform="translate(-6.594 -6.59)">
+    <path id="Path_1" data-name="Path 1" d="M184.484,282.039c-46.539-1.769-84.468-39.691-86.23-86.23a89.806,89.806,0,0,1,78.406-92.59,10.086,10.086,0,0,1,11.332,9.992c.141,75.68,3.41,78.941,79.09,79.09a10.083,10.083,0,0,1,9.992,11.332A89.832,89.832,0,0,1,184.484,282.039Zm0,0" fill="#e61a5a" fill-rule="evenodd" />
+    <g id="Group_1" data-name="Group 1" clip-path="url(#clip-path)">
+      <path id="Path_2" data-name="Path 2" d="M187.328,6.59C57.094,6.59,6.594,55.738,6.594,187.328c0,133.848,47.777,180.735,180.734,180.735,133.582,0,180.735-49.6,180.735-180.735C368.063,56.281,318.723,6.59,187.328,6.59Zm.336,309.66A128.617,128.617,0,1,1,316.281,187.633,128.615,128.615,0,0,1,187.664,316.25Zm0,0" fill="#e61a5a" fill-rule="evenodd" />
+    </g>
+  </g>
+</svg>

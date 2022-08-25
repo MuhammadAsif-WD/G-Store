@@ -1,4 +1,15 @@
 /* Import Tailwind CSS */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Full Website CSS */
+
+.navbar {
+  width: 100%;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}

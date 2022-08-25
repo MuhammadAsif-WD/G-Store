@@ -1,11 +1,156 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { Icon } from "@iconify/react";
+import auth from "../../firebase.init";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import Loading from "../../Shared/Loading";
+// import useToken from "../../Hooks/useToken";
 
-const Login = () => {
+const SignIn = () => {
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  // const [token] = useToken(user || gUser);
+
+  let signInError;
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  // useEffect(() => {
+  // //   if (token) {
+  // //     navigate(from, { replace: true });
+  // //   }
+  // // }, [token, from, navigate]);
+
+  if (loading || gLoading) {
+    return <Loading></Loading>;
+  }
+
+  if (error || gError) {
+    signInError = (
+      <p className="text-primary">
+        <small>{error?.message || gError?.message}</small>
+      </p>
+    );
+  }
+
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+  };
+
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="flex justify-center items-center text-secondary">
+      <div className="shadow-md p-16 justify-center">
+        <div>
+          <h2 className="text-center text-2xl uppercase font-serif font-thin mb-10 animate__animated animate__heartBeat">
+            Sign <span className="text-primary">In</span>
+            <span className="divider bg-primary h-[3px] w-1/4 mx-auto mt-1"></span>
+          </h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control w-full max-w-xs animate__animated animate__fadeIn">
+              <label>
+                <span>Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="input outline-none border border-primary rounded px-2 py-2 w-full max-w-xs"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email is Required",
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: "Provide a valid Email",
+                  },
+                })}
+              />
+              <label className="animate__animated animate__fadeIn animate__delay-1s">
+                {errors.email?.type === "required" && (
+                  <span className="text-primary">{errors.email.message}</span>
+                )}
+                {errors.email?.type === "pattern" && (
+                  <span className="text-primary">{errors.email.message}</span>
+                )}
+              </label>
+            </div>
+            <div className="form-control w-full max-w-xs mt-5 animate__animated animate__fadeIn animate__delay-1s">
+              <label>
+                <span>Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="Password"
+                className="input outline-none border border-primary rounded px-2 py-2 w-full max-w-xs animate__animated animate__fadeIn animate__delay-1s"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Password is Required",
+                  },
+                  minLength: {
+                    value: 8,
+                    message: "Must be 8 characters or longer",
+                  },
+                })}
+              />
+              <label className="animate__animated animate__fadeIn animate__delay-1s">
+                {errors.password?.type === "required" && (
+                  <span className="text-red-500">
+                    {errors.password.message}
+                  </span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span className="text-primary">
+                    {errors.password.message}
+                  </span>
+                )}
+              </label>
+            </div>
+
+            {signInError}
+            <input
+              className="w-full max-w-xs hover:bg-primary ease-in duration-300 hover:text-white py-2 rounded cursor-pointer border border-primary mt-8 animate__animated animate__fadeIn animate__delay-2s"
+              type="submit"
+              value="Login"
+            />
+          </form>
+          <p className="mt-2">
+            <small>
+              Are you new to our website?{" "}
+              <Link className="text-primary" to="/sign_up">
+                Create New Account
+              </Link>
+            </small>
+          </p>
+          <div className="flex gap-x-2 align-middle mt-5">
+            <div className="h-1 w-full bg-secondary"></div>
+            <div className="mt-[-10px]">OR</div>
+            <div className="h-1 bg-secondary w-full"></div>
+          </div>
+
+          <button
+            onClick={() => signInWithGoogle()}
+            className="mt-5 w-full py-2 border border-primary rounded hover:bg-primary hover:text-white ease-in duration-300 flex justify-center align-middle"
+          >
+            <span className="pr-3">Continue with Google </span>
+            <Icon className="w-6 h-6" icon="akar-icons:google-fill" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Login;
+export default SignIn;
