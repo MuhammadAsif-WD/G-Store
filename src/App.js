@@ -1,9 +1,8 @@
 // Dark Mode
 import React, { useEffect, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, duration, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
@@ -19,14 +18,19 @@ import Login from "./Authentication/Log/Login";
 import SignUp from "./Authentication/Signup/Signup";
 import Loading from "./Shared/Loading";
 import RequireAuth from "./Authentication/Log/RequireAuth";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
+  // use AOS
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
   const [loading, setLoading] = useState();
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 0.5);
   }, []);
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");

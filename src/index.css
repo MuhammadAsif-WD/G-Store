@@ -40,3 +40,29 @@
   width: 100vw;
   height: 100vh;
 }
+.explore_background_one {
+  background-image: url("./Assets/SVG/ExploreOne.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* transition: transform 0.5s; */
+  border-radius: 10px;
+  width: 42vw;
+  height: 42vh;
+}
+/* .explore_background_one:hover {
+  transform: scale(1.05);
+} */
+.explore_background_two {
+  background-image: url("./Assets/SVG/ExploreTwo.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* transition: transform 0.5s; */
+  background-size: cover;
+  border-radius: 10px;
+  width: 42vw;
+  height: 42vh;
+}
+/* .explore_background_two:hover {
+  transform: scale(0.9);
+} */
