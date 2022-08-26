@@ -1,5 +1,5 @@
 // Dark Mode
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,8 +17,18 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Authentication/Log/Login";
 import SignUp from "./Authentication/Signup/Signup";
+import Loading from "./Shared/Loading";
+import RequireAuth from "./Authentication/Log/RequireAuth";
 
 function App() {
+  const [loading, setLoading] = useState();
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = React.useMemo(
@@ -32,28 +42,62 @@ function App() {
   );
   return (
     <div>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/inventory" element={<Inventory />} />
-            <Route path="/manage" element={<ManageItems />} />
-            <Route path="/add" element={<AddItems />} />
-            <Route path="/my" element={<MyItems />} />
-            <Route path="/service" element={<Service />} />
-            <Route path="/blogs" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Navbar />
+          <div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
 
-            {/* Login & Logout */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-          </Routes>
-        </div>
-        <Footer />
-      </ThemeProvider>
+              <Route path="/service" element={<Service />} />
+              <Route path="/blogs" element={<Blog />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* Require Auth */}
+              <Route
+                path="/inventory"
+                element={
+                  <RequireAuth>
+                    <Inventory />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/manage"
+                element={
+                  <RequireAuth>
+                    <ManageItems />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/add"
+                element={
+                  <RequireAuth>
+                    <AddItems />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/my"
+                element={
+                  <RequireAuth>
+                    <MyItems />
+                  </RequireAuth>
+                }
+              />
+
+              {/* Login & Logout */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+            </Routes>
+          </div>
+          <Footer />
+        </ThemeProvider>
+      )}
     </div>
   );
 }

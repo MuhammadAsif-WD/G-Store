@@ -13,3 +13,30 @@
   padding-top: 1%;
   padding-bottom: 1%;
 }
+.banner_background_one {
+  background-image: url("./Assets/SVG/BannerOne.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+.banner_background_two {
+  background-image: url("./Assets/SVG/BannerTwo.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+.banner_background_three {
+  background-image: url("./Assets/SVG/BannerThree.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}

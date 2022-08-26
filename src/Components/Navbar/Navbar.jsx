@@ -12,6 +12,7 @@ const Navbar = () => {
   const menuChangeButton = () => {
     setShowMenu(!showMenu);
   };
+  
   return (
     <main className="2xl:flex xl:flex lg:flex justify-between navbar sticky top-0 z-50 bg-[#fff]">
       {/* Navbar Logo */}

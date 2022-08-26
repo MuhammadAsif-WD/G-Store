@@ -8,7 +8,7 @@ import Loading from "../../Shared/Loading";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import { Icon } from "@iconify/react";
-import useToken from "./useToken";
+import useToken from "../../Hooks/useToken";
 
 const SignIn = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -34,7 +34,7 @@ const SignIn = () => {
   }, [token, from, navigate]);
 
   if (loading || gLoading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   if (error || gError) {

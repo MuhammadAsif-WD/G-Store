@@ -6,10 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-// Import Swiper Slide Image
-import BannerOne from "../../Assets/SVG/BannerOne.svg";
-import BannerTwo from "../../Assets/SVG/BannerTwo.svg";
-import BannerThree from "../../Assets/SVG/BannerThree.svg";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
@@ -33,13 +29,41 @@ const HomeBanner = () => {
       >
         <div>
           <SwiperSlide>
-            <img className="w-[100%]" src={BannerOne} alt="" />
+            <div className="banner_background_one">
+              <h1 className="2xl:text-6xl xl:text-6xl lg:text-6xl md:text-5xl text-4xl font-extrabold text-center 2xl:w-2/3 xl:w-2/3 lg:w-2/3 md:w-2/3 w-full mx-auto pt-72 text-white leading-tight">
+                We provide our services to everyone with faith
+              </h1>
+              <p className="text-center pt-16">
+                <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
+                  Contact
+                </button>
+              </p>
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[100%]" src={BannerTwo} alt="" />
+            <div className="banner_background_two">
+              <h1 className="2xl:text-6xl xl:text-6xl lg:text-6xl md:text-5xl text-4xl font-extrabold text-center 2xl:w-2/3 xl:w-2/3 lg:w-2/3 md:w-2/3 w-full mx-auto pt-72 text-white leading-tight">
+                We try to provide the best products and services
+              </h1>
+              <p className="text-center pt-16">
+                <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
+                  Service
+                </button>
+              </p>
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[100%]" src={BannerThree} alt="" />
+            <div className="banner_background_three">
+              {" "}
+              <h1 className="2xl:text-6xl xl:text-6xl lg:text-6xl md:text-5xl text-4xl font-extrabold text-center 2xl:w-2/3 xl:w-2/3 lg:w-2/3 md:w-2/3 w-full mx-auto pt-72 text-white leading-tight">
+                Our website is dedicated to Laptop Warehouse
+              </h1>
+              <p className="text-center pt-16">
+                <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
+                  Most Product
+                </button>
+              </p>
+            </div>
           </SwiperSlide>
         </div>
       </Swiper>

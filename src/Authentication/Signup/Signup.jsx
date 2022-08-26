@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../Shared/Loading";
 import { Icon } from "@iconify/react";
-import useToken from "../Log/useToken";
+import useToken from "../../Hooks/useToken";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -25,7 +25,7 @@ const SignUp = () => {
 
   const [token] = useToken(user || gUser);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   let signUpError;
 
@@ -48,7 +48,7 @@ const SignUp = () => {
   }
 
   if (token) {
-    // navigate("/");
+    navigate("/");
   }
 
   const onSubmit = async (data) => {
