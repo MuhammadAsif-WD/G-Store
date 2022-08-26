@@ -20,7 +20,7 @@ const SecureCourier = () => {
           Learn More
         </button>
       </div>
-      <div>
+      <div className="2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-0 mt-16">
         <div data-aos="zoom-in" className="flex gap-x-5 bg-[#F7F7F9] p-10">
           <Icon
             className="w-14 h-14 text-primary"

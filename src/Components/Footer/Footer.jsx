@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 const Footer = () => {
   return (
     <footer>
-      <div className="bg-secondary flex flex-wrap gap-x-24 p-20">
+      <div className="bg-secondary flex flex-wrap gap-x-24 2xl:p-20 xl:p-20 lg:p-20 md:p-20 p-5">
         <div>
           <div className="flex gap-x-3 justify-start font-bold text-3xl animate__animated animate__fadeInLeft">
             <div className="flex align-middle gap-x-2">
@@ -59,18 +59,42 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-20 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-0 mt-16">
+        <div className="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-y-10 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-10 mt-16">
           <div>
             <h1 className="text-xl font-bold text-white">Who We Are</h1>
+            <div className="text-white text-md mt-10 gap-y-4 grid grid-cols-1">
+              <p>Service</p>
+              <p>Blog</p>
+              <p>Inventory</p>
+              <p>Manage Inventory</p>
+            </div>
           </div>
           <div>
             <h1 className="text-xl font-bold text-white"> What We Do</h1>
+            <div className="text-white text-md mt-10 gap-y-4 grid grid-cols-1">
+              <p>wholesale</p>
+              <p>Cheaply</p>
+              <p>Believable</p>
+              <p>Protection</p>
+            </div>
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">Company</h1>
+            <div className="text-white text-md mt-10 gap-y-4 grid grid-cols-1">
+              <p>Burris Logistics</p>
+              <p>C.H. Robinson</p>
+              <p>Coyote Logistics</p>
+              <p>DB Schenker</p>
+            </div>
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">More Info</h1>
+            <div className="text-white text-md mt-10 gap-y-4 grid grid-cols-1 w-48">
+              <p>TMS for small businesses</p>
+              <p>Managed procurement services</p>
+              <p>Coyote Logistics</p>
+              <p>Warehouse productivity consulting</p>
+            </div>
           </div>
         </div>
       </div>

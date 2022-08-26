@@ -1,6 +1,7 @@
 import React from "react";
 import ExploreProperty from "./ExploreProperty";
 import HomeBanner from "./HomeBanner";
+import HomeVideo from "./HomeVideo";
 import SafeMovers from "./SafeMovers";
 import SecureCourier from "./SecureCourier";
 
@@ -11,6 +12,7 @@ const Home = () => {
       <SafeMovers />
       <ExploreProperty />
       <SecureCourier />
+      <HomeVideo/>
     </div>
   );
 };
