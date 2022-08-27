@@ -70,14 +70,29 @@
   align-items: center;
   position: relative;
   border-radius: 5px;
-  padding: 5em 4em;
   margin: 0 auto;
   width: 80%;
+  z-index: 0;
+}
+.contact_bg {
+  background-image: url("./Assets/SVG/ContactUs.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
   z-index: 0;
 }
 .card_shadow {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   border-radius: 10px;
+}
+.input_shadow {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(207, 208, 209) 0px 0px 0px 1px inset;
 }
 .card-zoom {
   @apply relative flex items-center justify-center m-3 overflow-hidden shadow-xl rounded-2xl;

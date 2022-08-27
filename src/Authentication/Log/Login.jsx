@@ -133,6 +133,13 @@ const SignIn = () => {
                 </Link>
               </small>
             </p>
+            <Link to="/forgot">
+              <p>
+                <small className="text-start text-primary">
+                  Forgot password ?
+                </small>
+              </p>
+            </Link>
             <div className="flex gap-x-2 align-middle mt-5">
               <div className="h-1 w-full bg-secondary"></div>
               <div className="mt-[-10px]">OR</div>

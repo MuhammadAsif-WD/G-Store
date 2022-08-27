@@ -1,7 +1,8 @@
-// Dark Mode
+import SendEmailVerification from "./Authentication/Other/SendEmailVerification";
 import React, { useEffect, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { createTheme, duration, ThemeProvider } from "@mui/material/styles";
+// Dark Mode
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
@@ -20,7 +21,7 @@ import Loading from "./Shared/Loading";
 import RequireAuth from "./Authentication/Log/RequireAuth";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import SendEmailVerification from "./Authentication/SendEmailVerification/SendEmailVerification";
+import ForgotPassword from "./Authentication/Other/ForgotPassword";
 function App() {
   // use AOS
   useEffect(() => {
@@ -100,6 +101,7 @@ function App() {
               {/* Login & Logout */}
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/forgot" element={<ForgotPassword/>} />
             </Routes>
           </div>
           <Footer />
