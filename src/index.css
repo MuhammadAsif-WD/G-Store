@@ -45,24 +45,49 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* transition: transform 0.5s; */
   border-radius: 10px;
-  width: 42vw;
-  height: 42vh;
+  width: 100vw;
+  height: 100vh;
 }
-/* .explore_background_one:hover {
-  transform: scale(1.05);
-} */
+
 .explore_background_two {
   background-image: url("./Assets/SVG/ExploreTwo.svg");
   background-position: center center;
   background-repeat: no-repeat;
-  /* transition: transform 0.5s; */
   background-size: cover;
   border-radius: 10px;
-  width: 42vw;
-  height: 42vh;
+  width: 100vw;
+  height: 100vh;
 }
-/* .explore_background_two:hover {
-  transform: scale(0.9);
-} */
+.subscribe_bg {
+  background-image: url("./Assets/SVG/factory.svg");
+  box-shadow: 0 20px 100px 0 rgb(0 0 0 / 15%);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease-in-out;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+  padding: 5em 4em;
+  margin: 0 auto;
+  width: 80%;
+  z-index: 0;
+}
+.card_shadow {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  border-radius: 10px;
+}
+.card-zoom {
+  @apply relative flex items-center justify-center m-3 overflow-hidden shadow-xl rounded-2xl;
+}
+.card-zoom-image {
+  @apply absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover;
+}
+.card-zoom:hover .card-zoom-image {
+  @apply scale-125;
+}
+.card-zoom:hover {
+  @apply scale-100;
+}

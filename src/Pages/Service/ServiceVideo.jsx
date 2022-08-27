@@ -4,7 +4,7 @@ import "react-tuby/css/main.css";
 import high from "../../Assets/Video/high.mp4";
 import medium from "../../Assets/Video/medium.mp4";
 import low from "../../Assets/Video/low.mp4";
-const HomeVideo = () => {
+const ServiceVideo = () => {
   return (
     <div className="mb-32" data-aos="zoom-in-right" data-aos-duration="5000">
       <Player
@@ -29,4 +29,4 @@ const HomeVideo = () => {
   );
 };
 
-export default HomeVideo;
+export default ServiceVideo;

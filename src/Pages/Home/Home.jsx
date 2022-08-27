@@ -1,7 +1,9 @@
 import React from "react";
 import ExploreProperty from "./ExploreProperty";
 import HomeBanner from "./HomeBanner";
-import HomeVideo from "./HomeVideo";
+import HomeService from "./HomeService";
+import HomeSubscribe from "./HomeSubscribe";
+import MostProduct from "./MostProduct";
 import SafeMovers from "./SafeMovers";
 import SecureCourier from "./SecureCourier";
 
@@ -12,7 +14,9 @@ const Home = () => {
       <SafeMovers />
       <ExploreProperty />
       <SecureCourier />
-      <HomeVideo/>
+      <HomeService />
+      <MostProduct />
+      <HomeSubscribe />
     </div>
   );
 };

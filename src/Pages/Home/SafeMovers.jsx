@@ -1,11 +1,12 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import safeMovers from "../../Assets/SVG/SafeMovers.svg";
 
 const SafeMovers = () => {
   return (
     <div className="grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 mx-auto 2xl:gap-x-16 xl:gap-x-16 lg:gap-x-16 md:gap-x-16 2xl:p-24 xl:p-24 lg:p-16 md:p-24 p-4 2xl:pr-10 xl:pr-10 lg:pr-10 md:pr-10 pt-36 lg:mt-16 lg:mb-16">
       <div>
-        <img data-aos="zoom-in-up" src={safeMovers} alt="" />
+        <LazyLoadImage data-aos="zoom-in-up" src={safeMovers} />
       </div>
       <div data-aos="zoom-in-up">
         <h1 className="text-sm font-bold text-black xl:pr-10 lg:pr-10 md:pr-10 2xl:pt-0 xl:pt-0 lg:pt-0 md:pt-10 pt-16">

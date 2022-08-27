@@ -20,6 +20,7 @@ import Loading from "./Shared/Loading";
 import RequireAuth from "./Authentication/Log/RequireAuth";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SendEmailVerification from "./Authentication/SendEmailVerification/SendEmailVerification";
 function App() {
   // use AOS
   useEffect(() => {
@@ -62,13 +63,15 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               {/* Require Auth */}
               <Route
-                path="/inventory"
+                path="/inventory/:id"
                 element={
                   <RequireAuth>
-                    <Inventory />
+                    <SendEmailVerification>
+                      {<Inventory />}
+                    </SendEmailVerification>
                   </RequireAuth>
                 }
-              />
+              ></Route>
               <Route
                 path="/manage"
                 element={

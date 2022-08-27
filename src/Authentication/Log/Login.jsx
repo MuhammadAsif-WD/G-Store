@@ -1,5 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -8,7 +8,7 @@ import Loading from "../../Shared/Loading";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import { Icon } from "@iconify/react";
-import useToken from "../../Hooks/useToken";
+// import useToken from "../../Hooks/useToken";
 
 const SignIn = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -20,18 +20,16 @@ const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const [token] = useToken(user || gUser);
+  // const [token] = useToken(user || gUser);
 
   let signInError;
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    if (token) {
-      navigate(from, { replace: true });
-    }
-  }, [token, from, navigate]);
+  if (user || gUser) {
+    navigate(from, { replace: true });
+  }
 
   if (loading || gLoading) {
     return <Loading />;
