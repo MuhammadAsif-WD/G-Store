@@ -43,7 +43,7 @@ const Contact = () => {
   return (
     <div>
       <div className="contact_bg bg-fixed overflow-hidden"></div>
-      <div className="duration-700 ease-in grid grid-cols-2 gap-x-20 p-20">
+      <div className="duration-700 ease-in grid 2xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-x-20 2xl:p-20 xl:p-20 md:p-20 lg:p-20 p-10">
         <div>
           <h1 className="text-md font-bold text-black">CONTACT OUR TEAM</h1>
           <h1 className="text-4xl font-bold text-secondary mt-3">
@@ -82,7 +82,7 @@ const Contact = () => {
         <div className="flex flex-wrap">
           <form onSubmit={sendMail} action="">
             <input
-              className="input_shadow outline-none px-3 py-4 mt-5 ml-8 rounded-md"
+              className="input_shadow outline-none px-3 py-4 mt-5 2xl:ml-8 xl:ml-8 md:ml-8 lg:ml-8 rounded-md"
               type="text"
               name="Name"
               id=""
@@ -92,7 +92,7 @@ const Contact = () => {
               placeholder="Name *"
             />
             <input
-              className="input_shadow outline-none px-3 py-4 mt-5 ml-8 rounded-md"
+              className="input_shadow outline-none px-3 py-4 mt-5 2xl:ml-8 xl:ml-8 md:ml-8 lg:ml-8 rounded-md"
               type="text"
               name="Subject"
               id=""
@@ -102,7 +102,7 @@ const Contact = () => {
               placeholder="Subject *"
             />
             <input
-              className="input_shadow outline-none px-3 py-4 mt-5 ml-8 rounded-md"
+              className="input_shadow outline-none px-3 py-4 mt-5 2xl:ml-8 xl:ml-8 md:ml-8 lg:ml-8 rounded-md"
               type="email"
               name="Email"
               id=""
@@ -112,7 +112,7 @@ const Contact = () => {
               placeholder="Email *"
             />
             <input
-              className="input_shadow outline-none px-3 py-4 mt-5 ml-8 rounded-md"
+              className="input_shadow outline-none px-3 py-4 mt-5 2xl:ml-8 xl:ml-8 md:ml-8 lg:ml-8 rounded-md"
               type="text"
               name="PhoneNumber"
               id=""
@@ -122,7 +122,7 @@ const Contact = () => {
               placeholder="Phone Number *"
             />
             <textarea
-              className="input_shadow outline-none px-3 py-4 mt-5 w-11/12 ml-5 rounded-md"
+              className="input_shadow outline-none px-3 py-4 mt-5 w-11/12 2xl:ml-5 xl:ml-5 md:ml-5 lg:ml-5  rounded-md"
               name=""
               id=""
               cols="40"
@@ -131,7 +131,7 @@ const Contact = () => {
               onChange={handleMessageChange}
               placeholder="Type your query here"
             ></textarea>
-            <p className="text-xl text-white px-20 ml-5 py-3 mt-5 bg-primary/90 cursor-pointer w-64 rounded-md flex">
+            <p className="text-xl text-white px-20 2xl:ml-5 xl:ml-5 md:ml-5 lg:ml-5 py-3 mt-5 bg-primary/90 cursor-pointer w-64 rounded-md flex">
               <input className="cursor-pointer" type="submit" value="Submit" />
               <Icon className="pl-2 w-8 h-8" icon="mingcute:send-plane-fill" />
             </p>
