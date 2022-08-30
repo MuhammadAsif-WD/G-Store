@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { Link } from "react-router-dom";
 
 const HomeBanner = () => {
   return (
@@ -33,9 +34,11 @@ const HomeBanner = () => {
                 We provide our services to everyone with faith
               </h1>
               <p className="text-center pt-16">
-                <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
-                  Contact
-                </button>
+                <Link to="/contact">
+                  <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
+                    Contact
+                  </button>
+                </Link>
               </p>
             </div>
           </SwiperSlide>
@@ -45,9 +48,11 @@ const HomeBanner = () => {
                 We try to provide the best products and services
               </h1>
               <p className="text-center pt-16">
-                <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
-                  Service
-                </button>
+                <Link to="/service">
+                  <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
+                    Service
+                  </button>
+                </Link>
               </p>
             </div>
           </SwiperSlide>
@@ -58,9 +63,11 @@ const HomeBanner = () => {
                 Our website is dedicated to Laptop Warehouse
               </h1>
               <p className="text-center pt-16">
-                <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
-                  Most Product
-                </button>
+                <Link to="/manage">
+                  <button className="px-16 py-5 text-white bg-primary font-thin rounded-md">
+                    Manage Product
+                  </button>
+                </Link>
               </p>
             </div>
           </SwiperSlide>

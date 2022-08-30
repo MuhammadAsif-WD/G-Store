@@ -9,7 +9,7 @@ import SecureCourier from "./SecureCourier";
 
 const Home = () => {
   return (
-    <div className="mt-[-5rem]">
+    <div>
       <HomeBanner />
       <SafeMovers />
       <ExploreProperty />

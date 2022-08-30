@@ -12,7 +12,7 @@ const Navbar = () => {
   const menuChangeButton = () => {
     setShowMenu(!showMenu);
   };
-  
+
   return (
     <main className="2xl:flex xl:flex lg:flex justify-between navbar sticky top-0 z-50 bg-[#fff]">
       {/* Navbar Logo */}
@@ -21,7 +21,6 @@ const Navbar = () => {
           <div className="flex gap-x-3 justify-start font-bold text-3xl animate__animated animate__fadeInLeft">
             <div className="flex align-middle gap-x-2">
               <img className="w-10" src={Logo} alt="" />
-
               <h1 className="text-primary text-3xl mt-1 font-bold">G-Store</h1>
             </div>
           </div>

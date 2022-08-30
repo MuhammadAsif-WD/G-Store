@@ -19,7 +19,7 @@ const HomeService = () => {
       </h1>
       <div className="flex flex-wrap w-full mx-auto">
         <div
-          data-aos="zoom-in-right"
+          data-aos="zoom-in"
           className="bg-white 2xl:w-full xl:w-96 lg:w-80 p-10 mx-auto 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-5 mt-5"
         >
           <div className="bg-[#F7F7F9] text-primary hover:text-white w-28 h-28 mx-auto pt-6 hover:bg-primary pl-6 rounded-full ease-in duration-200">
@@ -51,7 +51,7 @@ const HomeService = () => {
           </p>
         </div>
         <div
-          data-aos="zoom-in-left"
+          data-aos="zoom-in"
           className="bg-white 2xl:w-full xl:w-96 lg:w-80 p-10 mx-auto 2xl:mt-0 xl:mt-0 lg:mt-0 md:mt-5 mt-5"
         >
           <div className="bg-[#F7F7F9] text-primary hover:text-white w-28 h-28 mx-auto pt-6 hover:bg-primary pl-6 rounded-full ease-in duration-200">

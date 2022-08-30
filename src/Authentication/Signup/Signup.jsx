@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../Shared/Loading";
 import { Icon } from "@iconify/react";
+import signUp from "../../Assets/SVG/SignUp.svg";
 // import useToken from "../../Hooks/useToken";
 
 const SignUp = () => {
@@ -42,11 +43,6 @@ const SignUp = () => {
       </p>
     );
   }
-
-  // if (user || gUser) {
-  //   console.log(user || gUser);
-  // }
-
   if (user || gUser) {
     navigate("/");
   }
@@ -54,11 +50,10 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    console.log("update done");
   };
   return (
-    <div className="flex justify-center items-center text-secondary">
-      <div className="shadow-md p-16 justify-center">
+    <div className="flex flex-wrap gap-x-20  mt-16 mb-16 justify-center items-center text-secondary">
+      <div data-aos="zoom-in-right" className="shadow-md p-16 justify-center">
         <div>
           <h2 className="text-center uppercase text-2xl font-thin font-serif animate__animated animate__heartBeat">
             Sign <span className="text-primary">Up</span>
@@ -182,6 +177,9 @@ animate__animated animate__fadeIn animate__delay-5s"
             </button>
           </div>
         </div>
+      </div>
+      <div data-aos="zoom-in-left">
+        <img className="w-[40vw]" src={signUp} alt="" />
       </div>
     </div>
   );

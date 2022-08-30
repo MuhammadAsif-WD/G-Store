@@ -6,7 +6,7 @@ import MostProductDetails from "./MostProductDetails";
 const MostProduct = () => {
   const [products] = useProducts();
   return (
-    <div className="2xl:m-32 xl:m-32 lg:m-20 md:m-20 m-10">
+    <div className="2xl:m-32 xl:m-24 lg:m-20 m-1">
       <h4 className="text-black text-center font-semibold text-sm uppercase">
         Our Product
       </h4>
@@ -14,9 +14,12 @@ const MostProduct = () => {
         Our best Laptop
       </h4>
 
-      <div className="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 grid-cols-1  gap-x-5 gap-y-50 mt-16">
-        {products.slice(0, 4).map((product) => (
-          <MostProductDetails product={product}></MostProductDetails>
+      <div className="flex flex-wrap  gap-x-8 gap-y-50 mt-16">
+        {products.slice(0, 6).map((product) => (
+          <MostProductDetails
+            key={product._id}
+            product={product}
+          ></MostProductDetails>
         ))}
       </div>
       <Link to="/manage">

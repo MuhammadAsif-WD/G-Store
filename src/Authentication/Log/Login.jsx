@@ -1,5 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -8,6 +8,8 @@ import Loading from "../../Shared/Loading";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import { Icon } from "@iconify/react";
+import signIn from "../../Assets/SVG/SignIn.svg";
+import useToken from "../../Hooks/useToken";
 // import useToken from "../../Hooks/useToken";
 
 const SignIn = () => {
@@ -20,24 +22,26 @@ const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  // const [token] = useToken(user || gUser);
+  const [token] = useToken(user || gUser);
 
   let signInError;
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  if (user || gUser) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
   if (loading || gLoading) {
-    return <Loading />;
+    return <Loading></Loading>;
   }
 
   if (error || gError) {
     signInError = (
-      <p className="text-primary">
+      <p className="text-red-500">
         <small>{error?.message || gError?.message}</small>
       </p>
     );
@@ -46,10 +50,12 @@ const SignIn = () => {
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
   };
-
   return (
-    <div className="flex justify-center items-center text-secondary">
-      <div className="shadow-md p-16 justify-center">
+    <div className="flex flex-wrap gap-x-36 justify-center items-center text-secondary mt-16 mb-16">
+      <div data-aos="zoom-in-right">
+        <img className="w-[36vw]" src={signIn} alt="" />
+      </div>
+      <div data-aos="zoom-in-left" className="shadow-md p-16 justify-center">
         <div>
           <h2 className="text-center text-2xl uppercase font-serif font-thin mb-10 animate__animated animate__heartBeat">
             Sign <span className="text-primary">In</span>

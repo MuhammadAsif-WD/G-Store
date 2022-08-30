@@ -21,6 +21,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 .banner_background_two {
   background-image: url("./Assets/SVG/BannerTwo.svg");
@@ -30,6 +31,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 .banner_background_three {
   background-image: url("./Assets/SVG/BannerThree.svg");
@@ -39,6 +41,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 .explore_background_one {
   background-image: url("./Assets/SVG/ExploreOne.svg");

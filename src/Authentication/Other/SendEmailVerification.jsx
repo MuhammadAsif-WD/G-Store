@@ -6,7 +6,7 @@ import {
 import { Navigate, useLocation } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../../Shared/Loading";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import SendMail from "../../Assets/SVG/SendMail.svg";
 
 const SendEmailVerification = ({ children }) => {
@@ -23,25 +23,31 @@ const SendEmailVerification = ({ children }) => {
 
   if (user.providerData[0]?.providerId === "password" && !user.emailVerified) {
     return (
-      <div className="pt-32 text-center">
-        <div className="w-1/3 mx-auto">
+      <div className="text-center flex flex-wrap">
+        <div className="w-[45vw] mx-auto">
           <img src={SendMail} alt="" />
         </div>
-        <div className="text-center">
-          <h3 className="w-2/5 pb-2 mx-auto text-[#1FAA59]">
-            Your Email Is not Verified Please Verified Your Email And Continue
-            My WareHouse
-          </h3>
+        <div className="w-[35vw] shadow-lg m-16 pt-28 p-5">
+          <div className="text-center">
+            <h3 className="pb-2 mx-auto text-4xl font-bold text-primary">
+              Verify your account
+            </h3>
+            <h3 className="pb-2 mx-auto text-xl font-bold text-secondary mt-5">
+              Your account has not been verified yet. Please verify your account
+              and then continue our Website.
+            </h3>
+          </div>
+          <button
+            className="bg-primary text-white px-16 py-4 mt-5 rounded-md"
+            onClick={async () => {
+              await sendEmailVerification();
+              toast.success("Send verification Link");
+            }}
+          >
+            Send Verification
+          </button>
         </div>
-        <button
-          className="btn button"
-          onClick={async () => {
-            await sendEmailVerification();
-            toast("Sent email");
-          }}
-        >
-          Send Verification Email Again
-        </button>
+        <ToastContainer />
       </div>
     );
   }

@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
+import man from "../../Assets/SVG/man.svg";
 
 const NavbarMobile = () => {
   const [user] = useAuthState(auth);
@@ -118,7 +119,29 @@ const NavbarMobile = () => {
             </li>
           </ul>
         )}
-        <li className="mt-10">
+        <div className="mt-5">
+          {user ? (
+            <div className="flex">
+              <p className="text-secondary font-semibold">{user.displayName}</p>
+              <div>
+                <div className="ml-3 mt-[-5px]">
+                  {user?.photoURL ? (
+                    <img
+                      className="w-8 h-8 rounded-full"
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  ) : (
+                    <img className="w-8 h-8 rounded-full" src={man} alt="" />
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <p>{""}</p>
+          )}
+        </div>
+        <li className="mt-5">
           {user ? (
             <Link to="/">
               <button

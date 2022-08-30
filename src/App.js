@@ -1,9 +1,5 @@
 import SendEmailVerification from "./Authentication/Other/SendEmailVerification";
 import React, { useEffect, useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
-// Dark Mode
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
@@ -16,12 +12,13 @@ import MyItems from "./Pages/MyItem/MyItems";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/Contact/Contact";
 import Login from "./Authentication/Log/Login";
+import RequireAuth from "./Authentication/Other/RequireAuth";
 import SignUp from "./Authentication/Signup/Signup";
 import Loading from "./Shared/Loading";
-import RequireAuth from "./Authentication/Log/RequireAuth";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ForgotPassword from "./Authentication/Other/ForgotPassword";
+import InventoryUpdate from "./Pages/Inventory/InventoryUpdate";
 function App() {
   // use AOS
   useEffect(() => {
@@ -32,27 +29,15 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 0.5);
+    }, 1000);
   }, []);
 
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: prefersDarkMode ? "dark" : "light",
-        },
-      }),
-    [prefersDarkMode]
-  );
   return (
     <div>
       {loading ? (
         <Loading />
       ) : (
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
+        <>
           <Navbar />
           <div>
             <Routes>
@@ -63,12 +48,13 @@ function App() {
               <Route path="/blogs" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
               {/* Require Auth */}
+              <Route path="/inventory" element={<Inventory />} />
               <Route
-                path="/inventory/:id"
+                path="/inventory_update/:id"
                 element={
                   <RequireAuth>
                     <SendEmailVerification>
-                      {<Inventory />}
+                      {<InventoryUpdate />}
                     </SendEmailVerification>
                   </RequireAuth>
                 }
@@ -77,7 +63,9 @@ function App() {
                 path="/manage"
                 element={
                   <RequireAuth>
-                    <ManageItems />
+                    <SendEmailVerification>
+                      <ManageItems />
+                    </SendEmailVerification>
                   </RequireAuth>
                 }
               />
@@ -85,7 +73,9 @@ function App() {
                 path="/add"
                 element={
                   <RequireAuth>
-                    <AddItems />
+                    <SendEmailVerification>
+                      <AddItems />
+                    </SendEmailVerification>
                   </RequireAuth>
                 }
               />
@@ -93,7 +83,9 @@ function App() {
                 path="/my"
                 element={
                   <RequireAuth>
-                    <MyItems />
+                    <SendEmailVerification>
+                      <MyItems />
+                    </SendEmailVerification>
                   </RequireAuth>
                 }
               />
@@ -101,11 +93,11 @@ function App() {
               {/* Login & Logout */}
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/forgot" element={<ForgotPassword/>} />
+              <Route path="/forgot" element={<ForgotPassword />} />
             </Routes>
           </div>
           <Footer />
-        </ThemeProvider>
+        </>
       )}
     </div>
   );

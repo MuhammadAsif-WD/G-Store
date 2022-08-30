@@ -33,9 +33,7 @@ const Contact = () => {
       { sender_name, sender_email, message, sender_subject, number },
       "WpMgcyC3aVAAi8KPa"
     )
-      .then((response) =>
-        toast.success("Send your massage", console.log(response))
-      )
+      .then((response) => toast.success("Send your massage"))
 
       .catch((err) => toast.error("Failed send your mail", err));
   };
@@ -44,7 +42,7 @@ const Contact = () => {
     <div>
       <div className="contact_bg bg-fixed overflow-hidden"></div>
       <div className="duration-700 ease-in grid 2xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 gap-x-20 2xl:p-20 xl:p-20 md:p-20 lg:p-20 p-10">
-        <div>
+        <div data-aos="zoom-in-right">
           <h1 className="text-md font-bold text-black">CONTACT OUR TEAM</h1>
           <h1 className="text-4xl font-bold text-secondary mt-3">
             Get In Touch With Us
@@ -58,7 +56,7 @@ const Contact = () => {
             Support Center 24/7 <br />
           </h2>
           <div className="text-black font-thin text-md mt-5">
-            <p className="mt-2 flex align-middle gap-x-2">
+            <div className="mt-2 flex align-middle gap-x-2">
               <Icon className="w-5 h-5 text-primary" icon="fa-solid:headset" />
               <a
                 className="hover:text-primary duration-500 font-semibold hover:underline"
@@ -66,8 +64,8 @@ const Contact = () => {
               >
                 +12 324-016-694
               </a>
-            </p>
-            <p className="mt-2 flex gap-x-2">
+            </div>
+            <div className="mt-2 flex gap-x-2">
               <Icon className="w-5 h-5 text-primary" icon="entypo:mail" />
               <a
                 className="hover:text-primary duration-500 font-semibold hover:underline"
@@ -76,10 +74,10 @@ const Contact = () => {
               >
                 G-Store@gmail.com
               </a>
-            </p>
+            </div>
           </div>
         </div>
-        <div className="flex flex-wrap">
+        <div data-aos="zoom-in-left" className="flex flex-wrap">
           <form onSubmit={sendMail} action="">
             <input
               className="input_shadow outline-none px-3 py-4 mt-5 2xl:ml-8 xl:ml-8 md:ml-8 lg:ml-8 rounded-md"
@@ -131,10 +129,10 @@ const Contact = () => {
               onChange={handleMessageChange}
               placeholder="Type your query here"
             ></textarea>
-            <p className="text-xl text-white px-20 2xl:ml-5 xl:ml-5 md:ml-5 lg:ml-5 py-3 mt-5 bg-primary/90 cursor-pointer w-64 rounded-md flex">
+            <div className="text-xl text-white px-20 2xl:ml-5 xl:ml-5 md:ml-5 lg:ml-5 py-3 mt-5 bg-primary/90 cursor-pointer w-64 rounded-md flex">
               <input className="cursor-pointer" type="submit" value="Submit" />
               <Icon className="pl-2 w-8 h-8" icon="mingcute:send-plane-fill" />
-            </p>
+            </div>
           </form>
         </div>
       </div>
